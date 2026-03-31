@@ -26,7 +26,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - DEL
   - LCTRL
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
