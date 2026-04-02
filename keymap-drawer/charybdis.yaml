@@ -71,15 +71,15 @@ layers:
   - F11
   - DEV TOOLS
   - CAPS
+  - MUTE
+  - VOL DN
+  - VOL UP
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - INS
+  - '-'
   - PSCRN
   - DEL
   - LCTRL
@@ -105,7 +105,7 @@ layers:
   - ']'
   - '='
   - '`'
-  - '-'
+  - {t: ▽, type: trans}
   - LALT
   - {t: SPACE, type: held}
   - {t: ▽, type: trans}
