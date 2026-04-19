@@ -10,7 +10,6 @@
 // 0: BASE    - standard QWERTY for Mac
 // 1: FN      - arrows on WASD, symbols, edit macros, screenshots, devtools + trackball PAN
 // 2: BT      - bluetooth management (V+B combo to enter)
-// 3: SCROLL  - trackball vertical scroll
 
 / {
     /* Trackball: mouse move on BASE layer */
@@ -36,20 +35,9 @@
         x-input-code = <INPUT_REL_HWHEEL>;
         y-input-code = <INPUT_REL_WHEEL>;
         y-invert;
-        bindings = <&ib_wheel_scaler 1 8>;
+        bindings = <&ib_wheel_scaler 1 12>;
     };
 
-    /* Trackball: vertical scroll on SCROLL layer */
-    trackball_scroll_listener {
-        compatible = "zmk,input-behavior-listener";
-        device = <&vtrackball>;
-        layers = <3>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_MISC>;
-        y-input-code = <INPUT_REL_WHEEL>;
-        y-invert;
-        bindings = <&ib_wheel_scaler 1 14>;
-    };
 
     ib_wheel_scaler: ib_wheel_scaler {
         compatible = "zmk,input-behavior-scaler";
@@ -105,18 +93,6 @@
 &trans             &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
                                                &trans        &trans        &trans          &trans  &trans
                                                              &trans        &trans          &trans
-            >;
-        };
-
-        scroll_layer {
-            label = "SCROLL";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
             >;
         };
     };
