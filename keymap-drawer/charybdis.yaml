@@ -14,7 +14,7 @@ layers:
   - F9
   - F10
   - F11
-  - Alt+Gui+ I
+  - DevTool
   - {t: ▽, type: trans}
   - MUTE
   - UP
@@ -36,15 +36,15 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+Gui+ 4
-  - Sft+Gui+ 5
+  - Screenshot
+  - Capture Bar
   - {t: ▽, type: trans}
   - LSHFT
   - Gui+ Z
   - Gui+ X
   - Gui+ C
   - Gui+ V
-  - Sft+Gui+ Z
+  - Redo
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}

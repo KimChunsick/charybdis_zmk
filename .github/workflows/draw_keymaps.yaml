@@ -171,7 +171,11 @@ jobs:
               "&new_dir": "NEW DIR",
               "&py_iter": "PYTHON LOOP",
               "&js_iter": "JS LOOP",
-              "&studio_unlock": "ZMK Studio"
+              "&studio_unlock": "ZMK Studio",
+              "&kp LA(LG(I))": "DevTool",
+              "&kp LS(LG(N4))": "Screenshot",
+              "&kp LS(LG(N5))": "Capture Bar",
+              "&kp LS(LG(Z))": "Redo"
             }
         run: |
           get_args() {
