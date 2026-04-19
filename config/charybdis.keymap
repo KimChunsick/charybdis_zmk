@@ -8,23 +8,11 @@
 
 // Layer definitions
 // 0: BASE    - standard QWERTY for Mac
-// 1: FN      - arrows on WASD, symbols, edit macros, screenshots, devtools
+// 1: FN      - arrows on WASD, symbols, edit macros, screenshots, devtools + trackball PAN
 // 2: BT      - bluetooth management (V+B combo to enter)
 // 3: SCROLL  - trackball vertical scroll
-// 4: PAN     - trackball 2D scroll (left thumb outer hold)
 
 / {
-    behaviors {
-        // Left thumb outer: tap = LALT (Opt), hold = PAN layer
-        lpan: left_alt_pan {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-    };
-
     /* Trackball: mouse move on BASE layer */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
@@ -39,27 +27,28 @@
         scale-divisor = <2>;
     };
 
-    /* Trackball: vertical scroll on FN and SCROLL layers */
+    /* Trackball: 2D pan (horizontal + vertical wheel) on FN layer */
+    trackball_pan_listener {
+        compatible = "zmk,input-behavior-listener";
+        device = <&vtrackball>;
+        layers = <1>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_HWHEEL>;
+        y-input-code = <INPUT_REL_WHEEL>;
+        y-invert;
+        bindings = <&ib_wheel_scaler 1 8>;
+    };
+
+    /* Trackball: vertical scroll on SCROLL layer */
     trackball_scroll_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&vtrackball>;
-        layers = <1 3>;
+        layers = <3>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_MISC>;
         y-input-code = <INPUT_REL_WHEEL>;
         y-invert;
         bindings = <&ib_wheel_scaler 1 14>;
-    };
-
-    /* Trackball: 2D pan (horizontal + vertical wheel) on PAN layer */
-    trackball_pan_listener {
-        compatible = "zmk,input-behavior-listener";
-        device = <&vtrackball>;
-        layers = <4>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_HWHEEL>;
-        y-input-code = <INPUT_REL_WHEEL>;
-        y-invert;
     };
 
     ib_wheel_scaler: ib_wheel_scaler {
@@ -90,7 +79,7 @@
 &kp TAB     &kp Q   &kp W   &kp E   &kp R       &kp T         &kp Y      &kp U     &kp I      &kp O    &kp P     &kp BSLH
 &kp CAPS    &kp A   &kp S   &kp D   &kp F       &kp G         &kp H      &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT   &kp Z   &kp X   &kp C   &kp V       &kp B         &kp N      &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RET
-                            &lpan 4 LALT  &kp SPACE  &kp LGUI  &mkp MCLK  &kp SPACE
+                            &kp LALT  &kp SPACE  &kp LGUI  &mkp MCLK  &kp SPACE
                                           &mkp LCLK  &mkp RCLK  &mo 1
             >;
         };
@@ -121,18 +110,6 @@
 
         scroll_layer {
             label = "SCROLL";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans
-                                &trans  &trans    &trans
-            >;
-        };
-
-        pan_layer {
-            label = "PAN";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
